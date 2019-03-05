@@ -34,7 +34,7 @@ public class BookController {
         List<Category> categories = bookService.getAllCategories();
         model.addAttribute("categories",categories);
         model.addAttribute("book",new Book());
-        return "BookAndForm";
+        return "BookAddForm";
     }
 
     /**
@@ -55,6 +55,7 @@ public class BookController {
      */
     @RequestMapping(value = "/book_save")
     public String saveBook(@ModelAttribute Book book){
+        System.out.println(book.toString());
         Category category = bookService.getCategory(book.getCategory().getId());
         book.setCategory(category);
         bookService.save(book);

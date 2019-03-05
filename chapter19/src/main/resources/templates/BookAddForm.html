@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>表单提交</h1>
+<!-- 表单提交用户信息,注意字段的设置,直接是*{} -->
+
+<form action="#" th:action="@{/book_save}" th:object="${book}" method="post">
+    <fieldset>
+        <legend>
+            Add a Book
+        </legend>
+        <p>
+            <label for = "category" class="control-label">Category</label>
+            <select class="form-control" name="category">
+                <option  th:each="cate:${categories}" value="${cate.name}" th:text="${cate.name }"></option>
+            </select>
+
+        </p>
+        <p>
+            <label for = "author" class="control-label">作者</label>
+            <input type="text" th:field="*{author}" />
+        </p>
+
+        <p>
+            <label for = "title" class="control-label">标题</label>
+            <input type="text" th:field="*{title}" />
+
+        </p>
+
+        <p>
+            <label for = "isbn" class="control-label">ISBN</label>
+            <input type="text" th:field="*{isbn}" />
+
+        </p>
+
+        <p id="buttons">
+            <input id="reset" th:type="reset" tabindex="4">
+            <input id="submit" th:type="submit" tabindex="5" value="Add Book">
+        </p>
+    </fieldset>
+
+</form>
+</body>
+</html>

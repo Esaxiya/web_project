@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" th:href="@{/css/main.css}" />
+    <title>Book List</title>
+</head>
+<body>
+
+<div>
+    <h1>Book List</h1>
+    <a href="/book_input">Add Book</a>
+    <table>
+        <tr>
+            <td>类别</td>
+            <td>标题</td>
+            <td>作者</td>
+            <td>ISBN</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr th:each="book : ${book}">
+            <td th:text="*{book.category.name}">类别</td>
+            <td th:text="*{book.title}">标题</td>
+            <td th:text="*{book.author}">作者</td>
+            <td th:text="*{book.isbn}">ISBN</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
